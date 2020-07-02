@@ -8,7 +8,7 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        //キーワードを入力
+         $query = Content::query();
         
     }
 }

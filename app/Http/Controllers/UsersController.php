@@ -14,4 +14,9 @@ class UsersController extends Controller
             'users'=>$users,
             ]);
    }
+   
+   public function show()
+   {
+       
+   }
 }

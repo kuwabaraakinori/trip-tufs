@@ -3,7 +3,9 @@
 @section('content')
     @if(Auth:check())
        <div class="row">
-           
+           <div class="offset-sm-4 col-sm-8">
+               @include('contents.contents')
+           </div>
        </div>
     @else
        <div class="jumbotron">

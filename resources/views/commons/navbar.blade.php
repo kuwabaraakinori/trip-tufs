@@ -15,9 +15,9 @@
                   <li class="nav-item dropdown">
                       <a href="#" class="nav link dropdown-toggle" data-toggle="dropdown">{{  }}</a>
                       <ul class="dropdown-menu dropdown-menu-right">
-                          <li class="dropdown-item">{{!! link_to_route('' , '投稿一覧' , []) !!}}</li>
+                          <li class="dropdown-item">{{!! link_to_route('users.show' , '投稿一覧' , []) !!}}</li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item">{{!! link_to_route('' , '検索' , []) !!}}</li>
+                          <li class="dropdown-item">{{!! link_to_route('search' , '検索' , []) !!}}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
                           <li class="dropdown-item">{{!! link_to_route('logout.get', 'Logout') !!}}</li>
@@ -29,7 +29,7 @@
                    {{-- ログインページへのリンク --}}
                    <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
                    {{-- 検索ページへのリンク --}}
-                   <li class="nav-item">{!! link_to_route('' , 'Search' , [] , ['class' => 'nav-link']) !!}</li>
+                   <li class="nav-item">{!! link_to_route('search' , 'Search' , [] , ['class' => 'nav-link']) !!}</li>
               </ul>
          </div>
     </nav>
