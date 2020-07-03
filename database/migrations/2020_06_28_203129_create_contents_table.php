@@ -19,8 +19,8 @@ class CreateContentsTable extends Migration
             $table->string('title' , 50);
             $table->string('picture');
             $table->string('content' , 500);
-            $table->integer('costs' , 30);
-            $table->integer('span' , 30);
+            $table->integer('costs' );
+            $table->integer('span' );
             $table->timestamps();
             
             //外部キー制約

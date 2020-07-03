@@ -10,10 +10,16 @@
     <body>
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
-      
         
         <div class="container">
+            {{-- エラーメッセージ --}}
+            @include('commons.error_messages')
+
+            @yield('content')
+        </div>
         
+        <div class="footer">
+            @include('commons.footer')
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

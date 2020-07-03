@@ -34,6 +34,7 @@ class ContentsController extends Controller
             'span' => 'required',
             'cost' => 'required',
         ]);
+        
         $request->user()->contents()->create([
             'title' => $request->title,
             'content' => $request->content,
