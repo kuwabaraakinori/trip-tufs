@@ -33,6 +33,8 @@ class ContentsController extends Controller
             'picture' =>'required'|'dimensions:width=320,height=240',
             'span' => 'required',
             'cost' => 'required',
+            'continent' => 'required',
+            'country' => 'required',
         ]);
         
         $request->user()->contents()->create([
@@ -41,7 +43,9 @@ class ContentsController extends Controller
             'picture' => $request->picture,
             'span' => $request->span,
             'cost' => $request->cost,
-        ]);
+            'continent' => $request->continent,
+            'country' => $request->country,
+            ]);
         
         return back();
     }

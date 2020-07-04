@@ -1,4 +1,4 @@
-@if (count($user)>0)
+@if (count($users)>0)
     <ul class="list-unstyled">
         @foreach ($users as $user)
            <li class="media">
@@ -9,7 +9,7 @@
                    </div>
                    <div>
                        {{-- ユーザー詳細ページへのリンク --}}
-                       <p>{!! link_to_route('' , '投稿を見る' , ['user' => $user-id]) !!}</p>
+                       <p>{!! link_to_route('users.show' , '投稿を見る' , ['user' => $user->id]) !!}</p>
                    </div>
                </div>
            </li>

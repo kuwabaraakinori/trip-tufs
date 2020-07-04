@@ -19,16 +19,16 @@
                           <li class="dropdown-item">{{!! link_to_route('search' , '検索' , []) !!}}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
-                          <li class="dropdown-item">{{!! link_to_route('logout.get', 'Logout') !!}}</li>
+                          <li class="dropdown-item">{{!! link_to_route('logout.get', 'ログアウト') !!}}</li>
                       </ul>
                   </li>
                   @else
                    {{-- ユーザー登録へのリンク --}
-                   <li class="nav-item">{!! link_to_route('signup.get' , 'Signup' , [] , ['class' => 'nav-link']) !!}</li>
+                   <li class="nav-item">{!! link_to_route('signup.get' , '登録' , [] , ['class' => 'nav-link']) !!}</li>
                    {{-- ログインページへのリンク --}}
-                   <li class="nav-item">{!! link_to_route('login', 'Login', [], ['class' => 'nav-link']) !!}</li>
+                   <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                    {{-- 検索ページへのリンク --}}
-                   <li class="nav-item">{!! link_to_route('search' , 'Search' , [] , ['class' => 'nav-link']) !!}</li>
+                   <li class="nav-item">{!! link_to_route('search' , '検索' , [] , ['class' => 'nav-link']) !!}</li>
               </ul>
          </div>
     </nav>

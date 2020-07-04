@@ -1,26 +1,13 @@
-@extends(layouts.app)
-
-@section(content)
-  <div class="container">
-      <div class="col-sm-4">
-          <form class="form-inline" action="{{url('')}}">
-               <div class="form-group">
-                   <input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="国名を入力してください">
-                   <input type="submit" value="検索" class="btn btn-info">
-               </div>
-          </form>
-      </div>
-      <div class="col-sm-8">
-          <form class="form-group row">
-              <ul class="continents-list">
-                  <li class="Asia"><a href="" placeholder='アジア'>></a></li>
-                  <li class="Europe"></li>
-                  <li class="Africa"></li>
-                  <li class="Ratin Ameriaca"></li>
-                  <li class="Oseania"></li>
-              </ul>
-          </form>
-      </div>
-       
-  </div>
-@endsection
+<div class="search">
+	{{ Form::open(['method' => 'GET']) }}
+	<div class="form-group">
+		{!! Form::label('text' , '国名') !!}
+		{!! Form::input('search', 'country', array('placeholder'=>'国名で検索')) !!}
+	</div>
+	<div class="form-group">
+		{!! Form::label('text' , '州名') !!}
+		{!! Form::select('continent' , [アジア, ヨーロッパ , オセアニア ,アフリカ ,北アメリカ ,南アメリカ ] , null , [class => 'form-control']) !!}
+	</div>
+	{{ Form::submit('Search', array('class' => 'btn btn-primary')) }}
+	{{ Form::close() }}
+</div>
