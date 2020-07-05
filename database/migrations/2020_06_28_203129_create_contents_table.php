@@ -17,10 +17,12 @@ class CreateContentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title' , 50);
+            $table->string('continent');
+            $table->string('country');
             $table->string('picture');
             $table->string('content' , 500);
-            $table->integer('costs' );
-            $table->integer('span' );
+            $table->integer('costs');
+            $table->integer('span');
             $table->timestamps();
             
             //外部キー制約

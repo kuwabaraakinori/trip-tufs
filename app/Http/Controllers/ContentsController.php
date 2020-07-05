@@ -32,7 +32,7 @@ class ContentsController extends Controller
             'content' => 'required|max:500',
             'picture' =>'required'|'dimensions:width=320,height=240',
             'span' => 'required',
-            'cost' => 'required',
+            'costs' => 'required',
             'continent' => 'required',
             'country' => 'required',
         ]);
@@ -66,6 +66,13 @@ class ContentsController extends Controller
     
     public function show ()
     {
+        //ユーザーの投稿を所得
+        $contents = $user-> contents()->orderBy('created_at' , 'desc')->paginate(10);//←L15 9-1で書き方参照
+        
+        return view('users.show' , [
+            'contents' => $contents
+            ]); 
+        
         
     }
 }
