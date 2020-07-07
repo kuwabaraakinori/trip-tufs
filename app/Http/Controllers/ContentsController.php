@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 class ContentsController extends Controller
 {
     public function index()
     {
+
         $data=[];
-        if(\Auth::check()){//認証済みの場合
-          //認証済みの
-         $user=\Auth::user();
+       /*if(\Auth::check())*/
+        {
+         $user = \App\User::find(1);
+         
          //ユーザーの投稿の一覧を作成日時の降順で所得
-         $contents = $user->feed_contents()->orderBy('created_at' , 'desc')->paginate(10);
+         $contents = $user->contents()->orderBy('created_at' , 'desc')->paginate(10);
          
          $data=[
              'user'=>$user,

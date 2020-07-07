@@ -9,7 +9,7 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         //クエリの作成
-         $query = Content::query();
+         $query = \App\Content::query();
          //キーワードの受け取り
          $country=$request->input('country');
          $continet=$request->input('continent');
@@ -25,7 +25,7 @@ class SearchController extends Controller
          //ページネーション
          $data=$query->orderBy('created_at','desc')->paginate(10);
          
-         return view('contents.contents' , [
+         return view('search.search' , [
              'contents' => $data,
              ]);
         

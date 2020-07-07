@@ -19,7 +19,6 @@
                {!! Form::password('password', ['class' => 'form-control']) !!}
             </div>
             
-            //ログインボタンを後に追加すること
             {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
           {!! Form::close() !!} 
         </div>

@@ -12,8 +12,9 @@
         @include('commons.navbar')
         
         <div class="container">
-            {{-- エラーメッセージ --}}
+           {{-- エラーメッセージ --}}
             @include('commons.error_messages')
+
 
             @yield('content')
         </div>

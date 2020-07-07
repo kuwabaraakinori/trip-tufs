@@ -10,6 +10,8 @@
             @if(Auth::id() == $user->id)
             {{-- ユーザの投稿一覧 --}}
             @include('contents.contents')
+            
+            @endif
         </div>
     </div>
 @endsection

@@ -12,23 +12,24 @@
               <ul class="navbar-nav">
                   @if(Auth::check())
                   <li class="nav-item dropdown">
-                      <a href="#" class="nav link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name  }}</a>
+                      <a href="#" class="nav link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name }}</a>
                       <ul class="dropdown-menu dropdown-menu-right">
-                          <li class="dropdown-item">{{!! link_to_route('users.show' , '投稿一覧' , []) !!}}</li>
+                          <li class="dropdown-item">{!! link_to_route('users.show' , '投稿一覧' , ['user' => Auth::id()]) !!}</li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item">{{!! link_to_route('search' , '検索' , []) !!}}</li>
+                          <li class="dropdown-item">{!! link_to_route('search' , '検索' , []) !!}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
-                          <li class="dropdown-item">{{!! link_to_route('logout.get', 'ログアウト') !!}}</li>
+                          <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                       </ul>
                   </li>
                   @else
-                   {{-- ユーザー登録へのリンク --}
+                   {{-- ユーザー登録へのリンク --}}
                    <li class="nav-item">{!! link_to_route('signup.get' , '登録' , [] , ['class' => 'nav-link']) !!}</li>
                    {{-- ログインページへのリンク --}}
                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                    {{-- 検索ページへのリンク --}}
                    <li class="nav-item">{!! link_to_route('search' , '検索' , [] , ['class' => 'nav-link']) !!}</li>
+                  @endif
               </ul>
          </div>
     </nav>

@@ -1,7 +1,7 @@
-<footer class="container">
-  <div class="row">    
+<footer class="mb-4">
+  <div class="row ">    
      <div class="offset-sm-2 col-sm-4 offset-sm-2">
-        <a class="navbar-brand" href='/'>Tufs-Tours</a>
+        <h2><a class="navbar-brand" href='/'>Tufs-Tours</a></h2>
      </div>
      <div class="col-sm-2">
         <ul class="list-inline">
