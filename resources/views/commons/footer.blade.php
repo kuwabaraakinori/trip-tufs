@@ -1,5 +1,5 @@
 <footer class="mb-4">
-  <div class="row ">    
+  <div class="container ">    
      <div class="offset-sm-2 col-sm-4 offset-sm-2">
         <h2><a class="navbar-brand" href='/'>Tufs-Tours</a></h2>
      </div>

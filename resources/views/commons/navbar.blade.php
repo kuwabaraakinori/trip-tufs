@@ -1,5 +1,5 @@
 <header class= 'mb-4'>
-    <nav class='navbar navbar-expand-sm navbar-dark bg-secondary'>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href='/'>Tufs-Tours</a>
         
@@ -16,7 +16,7 @@
                       <ul class="dropdown-menu dropdown-menu-right">
                           <li class="dropdown-item">{!! link_to_route('users.show' , '投稿一覧' , ['user' => Auth::id()]) !!}</li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item">{!! link_to_route('search' , '検索' , []) !!}</li>
+                          <li class="dropdown-item">{!! link_to_route('contents.store' , '投稿' , []) !!}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
                           <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
@@ -33,4 +33,5 @@
               </ul>
          </div>
     </nav>
+<div class='jumbotron'><img src=""></img></div>
 </header>

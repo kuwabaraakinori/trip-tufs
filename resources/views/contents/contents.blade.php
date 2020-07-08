@@ -1,3 +1,4 @@
+<div class="jumbotron">
 @if(count($contents)>0)
     <ul class="list-unstyled">
         @foreach ($contents as $content)
@@ -26,3 +27,4 @@
         @endforeach
     </ul>
 @endif  
+</div>
