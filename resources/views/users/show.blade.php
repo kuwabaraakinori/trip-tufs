@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <aside class="col-sm-4">
-            {{-- ユーザ情報 --}}
-            @include('users.card')
+            {{-- 検索フォーム--}}
+            @include('contents.form')
         </aside>
         <div class="col-sm-8">
             @if(Auth::id() == $user->id)

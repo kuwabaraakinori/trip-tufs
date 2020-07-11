@@ -10,7 +10,7 @@
 	
 	  <div class="form-group" >
 		{!! Form::label('text' , '国名') !!}
-		{!! Form::input('search', old('country'), null , ['class'=>'form-control']) !!}
+		{!! Form::input('country', old('country'), null , ['class'=>'form-control']) !!}
 	  </div>
 	  
 	  <div class="form-group">

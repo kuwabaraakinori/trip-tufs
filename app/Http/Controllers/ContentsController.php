@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 class ContentsController extends Controller
 {
+    /*
     public function index()
     {
 
         $data=[];
-       /*if(\Auth::check())*/
+       if(\Auth::check())
         {
          $user = \App\User::find(1);
          
@@ -24,6 +25,50 @@ class ContentsController extends Controller
         }
         return view('welcome' , $data);
     }
+    */
+    /*
+    protected $redirectTo = RouteServiceProvider::HOME;
+    
+    protected function validator(array $data)
+    {
+        return Validator::make($data , [
+            'title'=>['required' , 'string' , 'max:50'],
+            'continent'=>['required' , 'string'],
+            'country'=>['required' , 'string'],
+            'span'=>['required' , 'integer'],
+            'costs'=>['required' , 'integer'],
+            'picture'=>['required' , 'string' ],
+            'content'=>['required' , 'string' , 'max:500'],
+            ]);
+    }
+    
+    protected function create(array $data)
+    {
+        return Content::create([
+            'title'=> $data['title'],
+            'continent' =>$data['continent'],
+            'country' => $data['continent'],
+            'span' => $data['span'],
+            'costs' => $data['costs'],
+            'picture' => $data['picture'],
+            'content' => $data['content'],
+            ]);
+    }
+    */
+    
+    /*
+    public function create(Request $request)
+    {
+        $this->validate($request , Content::$rules);
+        $contents = new Content;
+        $content = $request->all();
+        $contents->fill($content)->save();
+        
+        return back(); 
+    }
+    */
+
+    
     
     public function store(Request $request)
     {
@@ -43,7 +88,7 @@ class ContentsController extends Controller
             'content' => $request->content,
             'picture' => $request->picture,
             'span' => $request->span,
-            'cost' => $request->cost,
+            'costs' => $request->costs,
             'continent' => $request->continent,
             'country' => $request->country,
             ]);
@@ -51,7 +96,7 @@ class ContentsController extends Controller
         return back();
     }
     
-    public function  destroy($id)
+    public function destroy($id)
     {
         //idの値で投稿を検索して所得
         $content=\App\Content::findOrFail($id);
@@ -65,15 +110,22 @@ class ContentsController extends Controller
         return back();
     }
     
+    
     public function show ()
     {
+        $user= User::findOrFail($id);
+        
+        /*if()*/
+        {
         //ユーザーの投稿を所得
         $contents = $user-> contents()->orderBy('created_at' , 'desc')->paginate(10);//←L15 9-1で書き方参照
         
+        
+        }
+         
         return view('users.show' , [
             'contents' => $contents
             ]); 
-        
         
     }
 }

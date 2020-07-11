@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-    protected $fillable = ['content' , 'title' ,  'picture' , 'span' , 'costs' , 'continent' , 'country'];
+    protected $fillable = ['user_id' ,'content' , 'title' ,  'picture' , 'span' , 'costs' , 'continent' , 'country'];
+    
+    public static $rules = array(
+        "content" => "required",
+        "title" => "required",
+        "picture"=>"required",
+        "span" =>"required",
+        "costs"=>"required",
+        "continent"=>"required",
+        "country"=>"required"
+        );
     
     public function user()
     {
