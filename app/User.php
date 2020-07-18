@@ -37,13 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    public function contents()
+    public function content()
     {
         return $this->hasMany(Content::class);
     }
     
     public function loadRelationshipCounts()
     {
-        $this->loadCount('contents');
+        $this->loadCount('content');
     }
 }

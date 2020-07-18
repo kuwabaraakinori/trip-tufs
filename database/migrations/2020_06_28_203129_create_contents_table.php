@@ -20,7 +20,7 @@ class CreateContentsTable extends Migration
             $table->string('continent');
             $table->string('country');
             $table->string('picture');
-            $table->string('content' , 500);
+            $table->string('content' , 250);
             $table->integer('costs');
             $table->integer('span');
             $table->timestamps();

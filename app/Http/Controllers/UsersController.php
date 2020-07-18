@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -18,7 +18,8 @@ class UsersController extends Controller
    public function show()
    {
        //idの値でユーザーを検索して所得
-       $user = User::findOrFail($id);
+       $user = Auth::user();
+;
        
        $contents = $user->feed_contents()->orderby('created_at' , 'desc')->paginate(10);
        
