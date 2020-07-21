@@ -14,13 +14,12 @@ class ContentRequest extends FormRequest
      */
     public function authorize()
     {
-        
             return true;
-        
-       
+    
     }
 
     /**
+     * 
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -31,11 +30,13 @@ class ContentRequest extends FormRequest
             'user_id'=>'required',
             'title' => 'required|string|max:255',
             'continent' => 'required|string',
-            'picture'=>'required|image|mimes:jpeg,png,jpg,gif|file',
+            'picture'=>'required|image|filemimes:jpeg,png,jpg,gif|file',
             'country' => 'required|string',
             'costs'=>'required|numeric',
             'span'=>'required|numeric',
             'content'=>'required|string|max:250',
         ];
     }
+    
+   
 }

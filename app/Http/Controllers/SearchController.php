@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Content;
 
 class SearchController extends Controller
 {
@@ -14,26 +15,26 @@ class SearchController extends Controller
 
     public function index(Request $request)
     {
-        //クエリの作成
-         $query = \App\Content::query();
-         //キーワードの受け取り
-         $country=$request->input('country');
-         $continet=$request->input('continent');
-         
-         if(!empty($country))
-         {
-             $query->where('country' , '%'.$keyward.'%');
-         }
-         if($request->has('continent'))
-         {
-             $query->where('continent');
-         }
-         //ページネーション
-         $data=$query->orderBy('created_at','desc')->paginate(10);
-         
-         return view('search.search' , [
-             'contents' => $data,
-             ]);
+         if(!empty($request->keyword)){
+            $query= Content::query();
         
+            $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
+                           ->orWhere('country',  'like' ,  "%{$request->keyword}%")
+                           ->get(); 
+            $datacounts = $request->keyword.'の検索結果一覧'.count($datas).'件';
+            
+
+            
+            /*$datas=$query->orderby('created_at' , 'desc')->paginate(4);*/
+
+            return view('search.contents' , [
+                'datas'=>$datas ,
+                'datacounts'=>$datacounts
+                ]);
+            }
+        else{
+            return redirect('/');
+        }
+       
     }
 }

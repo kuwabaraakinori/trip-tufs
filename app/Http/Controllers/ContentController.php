@@ -11,9 +11,9 @@ class ContentController extends Controller
    
     public function index()
     {
-       $contents=Content::all();
-        
-
+       
+       $contents = Content::orderby('created_at' , 'desc')->paginate(4);
+       
         return view("welcome" , [
             "contents"=>$contents
             ]);
@@ -27,36 +27,30 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
-        dd($request->file('picture'));
-        if ($request->file('picture')->isValid()){
-            
-            $content =new Content;
-        
-            $content->user_id = $request->user_id;
-            $content->content = $request->content;
-            $content->title = $request->title;
-            $content->span = $request->span;
-            $content->continent = $request->continent;
-            $content->country = $request-> country;
-            $content->costs = $request->costs;
-            
-            
-            $filename=$request->file('picture')->store('public/picture');
-            
-            $content->picture = basename($filename);
-            
-            
-            
-            /*
-            if(!isset($data['picture'])){
-                array_set($data , 'picture' ,basename($filename) );
-            }
-            */
-            
-            
-          $content->save();
+    
 
-        }
+            if($request->file('picture')->isValid()){
+                $content =new Content;
+                $filename = $request->file('image')->store('public/image');
+                $content->picture = basename($filename);
+
+                $content->user_id = $request->user_id;
+                $content->content = $request->content;
+                $content->title = $request->title;
+                $content->span = $request->span;
+                $content->continent = $request->continent;
+                $content->country = $request-> country;
+                $content->costs = $request->costs;
+                
+                $content->save();
+            }
+           
+            dd($content);
+            
+            
+            
+            
+
         return redirect('/');
     }
 
@@ -69,18 +63,15 @@ class ContentController extends Controller
     }
 
     
-    public function edit($content_id)
+    public function edit()
     {
-      $content = Content::findOrFail($content_id);
-      
-      return view('content.edit' , [
-          'content'=>$content,
-          ]);
+      return view('content.edit');
     }
 
    
     public function update(ContentRequest $request, $id)
     {
+        /*
          if ($request->file('picture')->isValid()){
             
             $content =new Content;
@@ -98,19 +89,17 @@ class ContentController extends Controller
             
             $content->picture = basename($filename);
             
-            
-            
-            /*
-            if(!isset($data['picture'])){
-                array_set($data , 'picture' ,basename($filename) );
-            }
-            */
+     
             
             
           $content->save();
+          
+          
 
         }
         return redirect('/');
+        */
+        
     }
 
    

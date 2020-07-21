@@ -11,7 +11,7 @@
     </div>
 　@endif
   <div class="card-body">
-     <form action="{{route('content.edit' , $content->id)}}" method="put"　enctype="multipart/form-data" >
+     <form action="{{route('content.edit' .['id'=>$content->id] )}}" method="put"　enctype="multipart/form-data" >
           @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>

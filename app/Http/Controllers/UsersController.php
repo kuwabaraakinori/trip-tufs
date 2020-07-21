@@ -18,10 +18,10 @@ class UsersController extends Controller
    public function show()
    {
        //idの値でユーザーを検索して所得
-       $user = Auth::user();
+       $user = \Auth::user();
 ;
        
-       $contents = $user->feed_contents()->orderby('created_at' , 'desc')->paginate(10);
+       $contents = $user->content()->orderby('created_at' , 'desc')->paginate(10);
        
        return view('users.show' , [
            'user' =>$user,

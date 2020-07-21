@@ -62,6 +62,9 @@
         <div class="form-group">
           <label for="exampleFormControlFile1">写真</label>
           <input type="file" class="form-control-file" id="exampleFormControlFile1" name="picture" value="{{old('picture')}}">
+          <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-secondary reset"><i class="fas fa-times fa-fw"></i>取消</button>
+          </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">コンテンツ</label>
@@ -73,3 +76,7 @@
   </div>
 </div>
 @endsection
+
+
+
+
