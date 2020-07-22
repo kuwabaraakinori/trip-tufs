@@ -27,31 +27,26 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
-    
+        dd($request->all());
+        if($request->validated()){
+            $content =new Content;
+            
+            $filename = $request->file('image')->store('public/image');
+            $content->picture = basename($filename);
 
-            if($request->file('picture')->isValid()){
-                $content =new Content;
-                $filename = $request->file('image')->store('public/image');
-                $content->picture = basename($filename);
-
-                $content->user_id = $request->user_id;
-                $content->content = $request->content;
-                $content->title = $request->title;
-                $content->span = $request->span;
-                $content->continent = $request->continent;
-                $content->country = $request-> country;
-                $content->costs = $request->costs;
-                
-                $content->save();
-            }
-           
-            dd($content);
+            $content->user_id = $request->user_id;
+            $content->content = $request->content;
+            $content->title = $request->title;
+            $content->span = $request->span;
+            $content->continent = $request->continent;
+            $content->country = $request-> country;
+            $content->costs = $request->costs;
             
-            
-            
-            
-
+            $content->save();
+        }
+        
         return redirect('/');
+        
     }
 
    
@@ -63,17 +58,18 @@ class ContentController extends Controller
     }
 
     
-    public function edit()
+    public function edit(Content $content)
     {
-      return view('content.edit');
+      return view('content.edit', [
+         'content'=>$content
+         ]);
     }
 
    
     public function update(ContentRequest $request, $id)
     {
-        /*
-         if ($request->file('picture')->isValid()){
-            
+        if($request->validated())
+        {
             $content =new Content;
         
             $content->user_id = $request->user_id;
@@ -88,17 +84,17 @@ class ContentController extends Controller
             $filename=$request->file('picture')->store('public/picture');
             
             $content->picture = basename($filename);
-            
-     
-            
-            
-          $content->save();
+            $content->save();
+    
+        }
+        
+           
           
           
 
-        }
+        
         return redirect('/');
-        */
+        
         
     }
 

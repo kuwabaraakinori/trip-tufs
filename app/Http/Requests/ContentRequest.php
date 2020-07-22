@@ -30,12 +30,15 @@ class ContentRequest extends FormRequest
             'user_id'=>'required',
             'title' => 'required|string|max:255',
             'continent' => 'required|string',
-            'picture'=>'required|image|filemimes:jpeg,png,jpg,gif|file',
+            'picture'=>'required|image|max:1000',
             'country' => 'required|string',
             'costs'=>'required|numeric',
             'span'=>'required|numeric',
             'content'=>'required|string|max:250',
         ];
+
+        
+         
     }
     
    

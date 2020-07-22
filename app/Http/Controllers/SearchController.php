@@ -21,7 +21,7 @@ class SearchController extends Controller
             $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
                            ->orWhere('country',  'like' ,  "%{$request->keyword}%")
                            ->get(); 
-            $datacounts = $request->keyword.'の検索結果一覧'.count($datas).'件';
+            $datacounts = $request->keyword.'の検索結果'.count($datas).'件';
             
 
             
@@ -37,4 +37,7 @@ class SearchController extends Controller
         }
        
     }
+    
+    
+    
 }
