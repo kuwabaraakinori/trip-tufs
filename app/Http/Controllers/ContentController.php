@@ -27,7 +27,6 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
-        dd($request->all());
         if($request->validated()){
             $content =new Content;
             
