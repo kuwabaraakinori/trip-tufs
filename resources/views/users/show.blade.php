@@ -27,4 +27,6 @@
             @endif
         </div>
     </div>
+</div>
+{{ $contents->links() }}
 @endsection

@@ -27,7 +27,6 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
-        dd($request);
         if($request->validated()){
             $content =new Content;
             
@@ -44,7 +43,7 @@ class ContentController extends Controller
             
             $content->save();
         }
-        
+
         return redirect('/');
         
     }
