@@ -30,7 +30,7 @@ class ContentRequest extends FormRequest
             'user_id'=>'required',
             'title' => 'required|string|max:255',
             'continent' => 'required|string',
-            'picture'=>'required|image|max:1000',
+            'picture'=> 'mimes:jpeg,jpg,png,gif|required|max:1000',
             'country' => 'required|string',
             'costs'=>'required|numeric',
             'span'=>'required|numeric',

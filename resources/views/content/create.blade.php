@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
   <div class="card-body">
-     <form action="{{route('content.store')}}" method="post"　enctype="multipart/form-data" >
+     <form action="{{route('content.store')}}" method="post" enctype='multipart/form-data' >
           @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>

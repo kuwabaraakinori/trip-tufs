@@ -12,7 +12,7 @@ class ContentController extends Controller
     public function index()
     {
        
-       $contents = Content::orderby('created_at' , 'desc')->paginate(4);
+       $contents = Content::orderby('created_at' , 'desc')->paginate(6);
        
         return view("welcome" , [
             "contents"=>$contents
@@ -27,10 +27,11 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
+        dd($request);
         if($request->validated()){
             $content =new Content;
             
-            $filename = $request->file('image')->store('public/image');
+            $filename = $request->file('picture')->store('public/picture');
             $content->picture = basename($filename);
 
             $content->user_id = $request->user_id;
@@ -80,17 +81,12 @@ class ContentController extends Controller
             $content->costs = $request->costs;
             
             
-            $filename=$request->file('picture')->store('public/picture');
+            $filename = $request->file('picture')->store('public/picture');
             
             $content->picture = basename($filename);
             $content->save();
     
         }
-        
-           
-          
-          
-
         
         return redirect('/');
         

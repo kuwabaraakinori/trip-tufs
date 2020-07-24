@@ -1,5 +1,10 @@
 <style type="text/css">
-     .jumbotron { background:url("https://d1f5hsy4d47upe.cloudfront.net/22/2278820339dfde3e8c50b8bfb5f27a40_w.jpg") center no-repeat; background-size: cover; height:250px; }
+     .jumbotron {
+         background:url("https://vps13-d-cdn.aquapal.net//thumbs/20200723-0820_70725432a26198b2d50eb199b01e62b1.jpg") center no-repeat; 
+         background-size: cover; 
+         height:250px; 
+         margin-top: 0px;
+     }
 </style>
 <header class= 'mb-4'>
     <div class="pb-5">
