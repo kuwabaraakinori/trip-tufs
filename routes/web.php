@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/' , 'ContentController@index');
+Route::get('/' , 'ContentController@index')->name('index');
     
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -21,8 +21,10 @@ Route::get('logout' , 'Auth\LoginController@logout')->name('logout.get');
 Route::get('search' , 'SearchController@index')->name('search');
 Route::group(['middleware' => ['auth']], function(){
 Route::resource('/content' , 'ContentController' , ['except'=>['index' ]]);
-
 Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);   
+
+Route::get('loginsearch' , 'SearchController@show')->name('loginsearch');
+
 
 });
 

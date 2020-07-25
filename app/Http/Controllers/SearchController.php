@@ -7,10 +7,6 @@ use App\Content;
 
 class SearchController extends Controller
 {
-     public function __construct()
-    {
-        $this->middleware('guest');
-    }
     
 
     public function index(Request $request)
@@ -21,9 +17,8 @@ class SearchController extends Controller
             $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
                            ->orWhere('country',  'like' ,  "%{$request->keyword}%")
                            ->get(); 
+                           
             $datacounts = $request->keyword.'の検索結果'.count($datas).'件';
-            
-
             
             /*$datas=$query->orderby('created_at' , 'desc')->paginate(4);*/
 
@@ -38,6 +33,30 @@ class SearchController extends Controller
        
     }
     
+    public function show(Request $request)
+    {
+         if(!empty($request->keyword)){
+            $query= Content::query();
+        
+            $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
+                           ->orWhere('country',  'like' ,  "%{$request->keyword}%")
+                           ->get(); 
+            $datacounts = $request->keyword.'の検索結果'.count($datas).'件';
+            
+
+            
+            /*$datas=$query->orderby('created_at' , 'desc')->paginate(4);*/
+
+            return view('search.logincontents' , [
+                'datas'=>$datas ,
+                'datacounts'=>$datacounts
+                ]);
+            }
+        else{
+            return redirect('/');
+        }
+       
+    }
     
     
 }

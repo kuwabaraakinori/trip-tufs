@@ -28,5 +28,5 @@
         </div>
     </div>
 </div>
-{{ $contents->links() }}
+{{ $contents->links()}}
 @endsection

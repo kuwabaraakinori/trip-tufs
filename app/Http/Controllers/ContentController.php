@@ -57,20 +57,25 @@ class ContentController extends Controller
     }
 
     
-    public function edit(Content $content)
+    public function edit($id)
     {
-      return view('content.edit', [
-         'content'=>$content
-         ]);
+        $content = Content::find($id);
+        return view('content.edit',[
+          'message' => '編集フォーム',
+          'content' => $content
+          ]);
     }
 
    
-    public function update(ContentRequest $request, $id)
+    public function update(ContentRequest $request)
     {
-        if($request->validated())
-        {
-            $content =new Content;
-        
+
+        if($request->validated()){
+            $content = Content::find($request->id);
+
+            $filename = $request->file('picture')->store('public/picture');
+            $content->picture = basename($filename);
+
             $content->user_id = $request->user_id;
             $content->content = $request->content;
             $content->title = $request->title;
@@ -79,17 +84,15 @@ class ContentController extends Controller
             $content->country = $request-> country;
             $content->costs = $request->costs;
             
-            
-            $filename = $request->file('picture')->store('public/picture');
-            
-            $content->picture = basename($filename);
             $content->save();
-    
+            
         }
         
-        return redirect('/');
-        
-        
+        return view('content.editconfirm' , [
+            'content'=>$content,
+            'message'=>'確認画面'
+            ]);
+
     }
 
    

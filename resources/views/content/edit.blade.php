@@ -1,21 +1,22 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
+  <div class="card-title" style="text-center"><h2>{{$message}}</h2></div>
   @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>{{ $error}}</li>
             @endforeach
         </ul>
     </div>
 　@endif
   <div class="card-body">
-     <form action="{{route('content.update' , [$content->id] )}}" method="put"　enctype="multipart/form-data" >
+     <form action="{{route('content.update' , $content->id )}}" method="put"　enctype="multipart/form-data">
           @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="旅のタイトル" name="title" value='{{old('title' , $content->title )}}'>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="input your title" name="title" value='{{old('title' , $content->title )}}'>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">大陸名</label>
@@ -35,6 +36,7 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">滞在期間</label>
           <select class="form-control" id="exampleFormControlSelect1" name="span" placeholder="滞在期間を選択" value='{{old('span' , $content->span)}}'>
+            <option value=''>選択してください</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -57,6 +59,7 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">費用</label>
           <select class="form-control" id="exampleFormControlSelect1" name="costs" placeholder="金額を選択" value='{{old('costs' , $content->costs)}}'>
+            <option value=''>選択してください</option>
             <option>10000</option>
             <option>30000</option>
             <option>50000</option>
@@ -78,6 +81,7 @@
         </div>
         <input type="hidden" name="user_id" value="{{Auth::id()}}">
         <button type="submit" class="btn btn-success btn-lg btn-block">更新</button>
+        {{ link_to_route('index' , '戻る' , null , ['class'=>'btn btn-info btn-lg btn-block']) }}
       </form>
   </div>
 </div>
