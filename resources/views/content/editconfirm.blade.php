@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<div class="row">
+<div class="card">
     <div class="card-title"><h2>{{ $message }}</h2></div>
     <div class="card col-md-10" style="width: 40rem;">
-　　<img src="{{asset('storage/picture/'. $content->picture) }}" class="rounded float-left" width="100%" height="200">   
+　　<img src="{{asset('storage/public/picture/'. $content->picture) }}" class="rounded float-left" width="100%" height="200">   
 　　<div class="card-body">
         <h5 class="card-title">{{ $content->title }}</h5>
         <p class="card-text">{{ $content->content }}</p>

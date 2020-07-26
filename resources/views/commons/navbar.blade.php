@@ -17,19 +17,11 @@
         </button>
         
          <div class="collapse navbar-collapse" id="nav-bar">
-              @if(Auth::check())
-               <form class="form-inline" action="{{route('loginsearch')}}" method="get">
-                  @csrf
-                <input class="form-control mr-sm-2" type="text" name="keyword" value="" placeholder="Continent or Country " aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
-               </form>
-              @else
-                <form class="form-inline" action="{{route('search')}}" method="get">
+             <form class="form-inline" action="{{route('search')}}" method="get">
                   @csrf
                 <input class="form-control mr-sm-2" type="text" name="keyword" value="" placeholder="Continent or Country " aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
               　</form>
-              @endif
               <ul class="navbar-nav mr-auto"></ul>
               <ul class="navbar-nav">
                   @if(Auth::check())
@@ -39,6 +31,8 @@
                           <li class="dropdown-item">{!! link_to_route('users.show' , '投稿一覧' , ['user' => Auth::id()]) !!}</li>
                           <li class="dropdown-divider"></li>
                           <li class="dropdown-item">{!! link_to_route('content.create' , '投稿する') !!}</li>
+                          <li class="dropdown-divider"></li>
+                          <li class="dropdown-item">{!! link_to_route('users.index' , 'ユーザー一覧' ) !!}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
                           <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>

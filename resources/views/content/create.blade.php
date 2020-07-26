@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
+<h2 class="card-title" style="font-family:serif; font-weight:bolder; text-align:center;">投稿画面</h2>
 <div class="card">
   <div class="card-body">
-     <form action="{{route('content.store')}}" method="post" enctype='multipart/form-data' >
+     <form action="{{route('content.store')}}" method="post" enctype='multipart/form-data'>
           @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>
@@ -72,6 +73,7 @@
         </div>
         <input type="hidden" name="user_id" value="{{Auth::id()}}">
         <button type="submit" class="btn btn-primary btn-lg btn-block">投稿</button>
+        {{ link_to_route('index' , '戻る' , null , ['class'=>'btn btn-info btn-lg btn-block']) }}
       </form>
   </div>
 </div>

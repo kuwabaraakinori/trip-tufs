@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-  <div class="card-title" style="text-center"><h2>{{$message}}</h2></div>
+  <div class="card-title" style="margin-bottom:10px;">
+    <h2 style="font-family:serif; background-color:#E6E6E6; text-shadow:2px 2px 1px #B4B4B4 ; font-weight:bolder;  text-align:center;">
+      {{$message}}
+    </h2>
+  </div>
   @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -14,6 +18,7 @@
   <div class="card-body">
      <form action="{{route('content.update' , $content->id )}}" method="put"　enctype="multipart/form-data">
           @csrf
+          {{ method_field('patch') }}
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>
           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="input your title" name="title" value='{{old('title' , $content->title )}}'>

@@ -12,19 +12,20 @@ class SearchController extends Controller
     public function index(Request $request)
     {
          if(!empty($request->keyword)){
-            $query= Content::query();
-        
+
             $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
                            ->orWhere('country',  'like' ,  "%{$request->keyword}%")
-                           ->get(); 
-                           
+                           ->orderby('created_at' , 'desc')
+                           ->get();
+
             $datacounts = $request->keyword.'の検索結果'.count($datas).'件';
             
-            /*$datas=$query->orderby('created_at' , 'desc')->paginate(4);*/
+            $contents = Content::orderby('created_at' , 'desc')->paginate(6);
 
             return view('search.contents' , [
                 'datas'=>$datas ,
-                'datacounts'=>$datacounts
+                'datacounts'=>$datacounts,
+                'contents'=>$contents
                 ]);
             }
         else{
@@ -32,31 +33,4 @@ class SearchController extends Controller
         }
        
     }
-    
-    public function show(Request $request)
-    {
-         if(!empty($request->keyword)){
-            $query= Content::query();
-        
-            $datas = Content::where('continent', 'like' , "%{$request->keyword}%")
-                           ->orWhere('country',  'like' ,  "%{$request->keyword}%")
-                           ->get(); 
-            $datacounts = $request->keyword.'の検索結果'.count($datas).'件';
-            
-
-            
-            /*$datas=$query->orderby('created_at' , 'desc')->paginate(4);*/
-
-            return view('search.logincontents' , [
-                'datas'=>$datas ,
-                'datacounts'=>$datacounts
-                ]);
-            }
-        else{
-            return redirect('/');
-        }
-       
-    }
-    
-    
 }

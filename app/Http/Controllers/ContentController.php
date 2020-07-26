@@ -59,7 +59,7 @@ class ContentController extends Controller
     
     public function edit($id)
     {
-        $content = Content::find($id);
+        $content = Content::findOrFail($id);
         return view('content.edit',[
           'message' => '編集フォーム',
           'content' => $content
@@ -67,9 +67,8 @@ class ContentController extends Controller
     }
 
    
-    public function update(ContentRequest $request)
+    public function update(ContentRequest $request )
     {
-
         if($request->validated()){
             $content = Content::find($request->id);
 
