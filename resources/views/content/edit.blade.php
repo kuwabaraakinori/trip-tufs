@@ -6,19 +6,9 @@
       {{$message}}
     </h2>
   </div>
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error}}</li>
-            @endforeach
-        </ul>
-    </div>
-　@endif
   <div class="card-body">
-     <form action="{{route('content.update' , $content->id )}}" method="put"　enctype="multipart/form-data">
+     {!!  Form::model($content , ['route' => ['content.update' , $content->id] , 'method' => 'put' , 'enctype' => 'multipart/form-data'])  !!}
           @csrf
-          {{ method_field('patch') }}
         <div class="form-group">
           <label for="exampleFormControlInput1">タイトル</label>
           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="input your title" name="title" value='{{old('title' , $content->title )}}'>
@@ -87,7 +77,7 @@
         <input type="hidden" name="user_id" value="{{Auth::id()}}">
         <button type="submit" class="btn btn-success btn-lg btn-block">更新</button>
         {{ link_to_route('index' , '戻る' , null , ['class'=>'btn btn-info btn-lg btn-block']) }}
-      </form>
+      {!!  Form::close() !!}
   </div>
 </div>
 @endsection

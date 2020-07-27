@@ -40,10 +40,13 @@ class User extends Authenticatable
     public function content()
     {
         return $this->hasMany(Content::class);
+        
+        
     }
     
     public function loadRelationshipCounts()
     {
         $this->loadCount('content');
+    
     }
 }

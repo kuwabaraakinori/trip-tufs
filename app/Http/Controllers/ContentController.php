@@ -60,6 +60,7 @@ class ContentController extends Controller
     public function edit($id)
     {
         $content = Content::findOrFail($id);
+
         return view('content.edit',[
           'message' => '編集フォーム',
           'content' => $content
@@ -67,10 +68,11 @@ class ContentController extends Controller
     }
 
    
-    public function update(ContentRequest $request )
+    public function update(ContentRequest $request , $id)
     {
+
         if($request->validated()){
-            $content = Content::find($request->id);
+            $content = Content::find($id);
 
             $filename = $request->file('picture')->store('public/picture');
             $content->picture = basename($filename);
@@ -84,9 +86,8 @@ class ContentController extends Controller
             $content->costs = $request->costs;
             
             $content->save();
-            
         }
-        
+
         return view('content.editconfirm' , [
             'content'=>$content,
             'message'=>'確認画面'

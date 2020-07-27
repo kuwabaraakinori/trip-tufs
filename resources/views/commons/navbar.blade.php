@@ -32,7 +32,7 @@
                           <li class="dropdown-divider"></li>
                           <li class="dropdown-item">{!! link_to_route('content.create' , '投稿する') !!}</li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item">{!! link_to_route('users.index' , 'ユーザー一覧' ) !!}</li>
+                          <li class="dropdown-item"><input type="hidden" name="id" value="{{Auth::id()}}">{!! link_to_route('users.index' , 'ユーザー一覧' ) !!}</li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
                           <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
