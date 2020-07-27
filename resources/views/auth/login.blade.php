@@ -21,6 +21,9 @@
             
             {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
           {!! Form::close() !!} 
+        <div>
+            <p style="font-family:serif; text-align:center; margin-top:20px;"><a href="/signup" id="linkid">ユーザー登録がまだの方</a></p>
+        </div>
         </div>
     </div>
 @endsection

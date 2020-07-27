@@ -6,7 +6,7 @@
         <div class="card-body">
              @foreach($datas as $data)
                 <div class="pb-5">
-                　<img src="{{asset('storage/public/picture/' . $data->picture)}}" class="rounded float-left" width="100%" height="130">
+                　<img src="{{asset('storage/public/picture/' . $data->picture)}}" class="rounded float-left" width="100%" height="180">
                   <div class="card">
                    <div class="card-body">
                      <h5 class="card-title">{{ $data->title }}</h5>

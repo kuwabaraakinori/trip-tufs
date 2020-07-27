@@ -8,7 +8,7 @@
             @foreach($contents as $content)
             <div class="mb-5">
                 <div class="card">
-                    <img src="{{asset('storage/public/picture/' . $content->picture)}}" class="rounded float-left" width="100%" height="130">
+                    <img src="{{asset('storage/public/picture/' . $content->picture)}}" class="rounded float-left" width="100%" height="180">
                     <div class="card-body">
                         <h5 class="card-title">{{ $content->title }}</h5>
                     </div>

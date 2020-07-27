@@ -8,7 +8,7 @@
       </li>
       <li class="list-inline-item">
         <a class="btn-floating btn-tw mx-1">
-          <i class="fab fa-twitter"> </i>
+          <i class="fab fa-twitter"></i>
         </a>
       </li>
       <li class="list-inline-item">
@@ -18,7 +18,7 @@
       </li>
       <li class="list-inline-item">
         <a class="btn-floating btn-li mx-1">
-          <i class="fab fa-linkedin-in"> </i>
+          <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
       <li class="list-inline-item">
@@ -28,7 +28,6 @@
       </li>
     </ul>
   </div>
-  <div class="footer-copyright text-center py-3">© 2020 Tufs-Trip:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center py-3">© 2020 Tufs-Trip
   </div>
 </footer>

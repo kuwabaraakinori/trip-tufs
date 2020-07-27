@@ -20,7 +20,7 @@
              <form class="form-inline" action="{{route('search')}}" method="get">
                   @csrf
                 <input class="form-control mr-sm-2" type="text" name="keyword" value="" placeholder="Continent or Country " aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" >Search<i class="fas fa-search ml-sm-2"></i></button>
               　</form>
               <ul class="navbar-nav mr-auto"></ul>
               <ul class="navbar-nav">
@@ -28,14 +28,14 @@
                   <li class="nav-item dropdown">
                       <a href="#" class="nav link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name }}</a>
                       <ul class="dropdown-menu dropdown-menu-right">
-                          <li class="dropdown-item">{!! link_to_route('users.show' , '投稿一覧' , ['user' => Auth::id()]) !!}</li>
+                          <li class="dropdown-item">{!! link_to_route('users.show' , '投稿一覧' , ['user' => Auth::id()]) !!}<i class="fas fa-book ml-sm-2"></i></li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item">{!! link_to_route('content.create' , '投稿する') !!}</li>
+                          <li class="dropdown-item">{!! link_to_route('content.create' , '投稿する') !!}<i class="fas fa-pen ml-sm-2"></i></li>
                           <li class="dropdown-divider"></li>
-                          <li class="dropdown-item"><input type="hidden" name="id" value="{{Auth::id()}}">{!! link_to_route('users.index' , 'ユーザー一覧' ) !!}</li>
+                          <li class="dropdown-item"><input type="hidden" name="id" value="{{Auth::id()}}">{!! link_to_route('users.index' , 'ユーザー' ) !!}<i class="fas fa-user-friends ml-sm-2"></i></li>
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
-                          <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                          <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}<i class="fas fa-sign-out-alt ml-sm-2"></i></li>
                       </ul>
                   </li>
                   @else
@@ -43,6 +43,7 @@
                    <li class="nav-item">{!! link_to_route('signup.get' , '登録' , [] , ['class' => 'nav-link']) !!}</li>
                    {{-- ログインページへのリンク --}}
                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('contact.index', 'お問い合わせ', [], ['class' => 'nav-link']) !!}</li>
                   @endif
               </ul>
          </div>
