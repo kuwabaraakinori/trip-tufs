@@ -36,8 +36,6 @@ class ContentRequest extends FormRequest
             'content'=>'required|string|max:250',
         ];
 
-        
-         
     }
     
    

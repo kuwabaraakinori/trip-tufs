@@ -36,6 +36,8 @@
                           <li class="dropdown-divider"></li>
                           {{-- ログアウトへのリンク  --}}
                           <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}<i class="fas fa-sign-out-alt ml-sm-2"></i></li>
+                          <li class="dropdown-divider"></li>
+                          <li class="dropdown-item">{!! link_to_route('contact.index', 'お問い合わせ') !!}</li>
                       </ul>
                   </li>
                   @else
