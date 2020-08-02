@@ -7,35 +7,34 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+use Illuminate\Http\Request;
+use App\Contet;
+use App\User;
+
+
 class Contactsendmail extends Mailable
 {
     use Queueable, SerializesModels;
-
-
-     protected $data;
-     protected $view;
-
-     
-     
     
-    public function __construct($data , $view = 'mail.blade.php')
+   
+    public function __construct()
     {
-        $this->data = $data;
-        $this->view =$view;
         
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
+  
+    public function build(Request $request)
     {
-        return $this->from($this->data['from_email'], $this->data['name'])
-        ->to($this->data['to'] , $this->data['to_name'])
-        ->subject($this->data['subject'])
-        ->view('contact.mail' . $this->view)
-        ->with(['data'=> $this->data]);
+        return $this
+        ->from($request->email)
+        ->subject('Tufs-Tours')
+        ->to('kaai06221733@gmail.com')
+        ->view("mail")
+        ->with([
+            'from_email'=>$request->email,
+            'content' => $request->content,
+            'name' => $request->name
+            ]);
     }
 }
+    

@@ -2,7 +2,7 @@
 
 @section('content')
    <div class="text-center">
-       <h1 style="font-family:serif; text-align:center; margin-top:20px;"登録</h1>
+       <h1 style="font-family:serif; text-align:center; margin-top:20px;">登録</h1>
    </div>
    
    <div class="row">

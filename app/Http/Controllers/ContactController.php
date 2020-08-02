@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ContentRequest;
-use App\Mail\ContactSendmail;
-
+use App\Http\Requests\ContactRequest;
+use App\Mail\Contactsendmail;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Content;
 
@@ -18,60 +18,31 @@ class ContactController extends Controller
         
     }
     
-    public function confirm(Request $request)
+    public function confirm(ContactRequest $request)
     {
-        $data = [];
-        $request->validate([
-            'content' => 'required|string',
-            'email' => 'required|string',
-            'name' => 'required|string'
-            ]);
-            
-        $content  = $request->get('content');
-        
-        $email = $request->get('email');
-        
-        $name= $request->get('name');
-        
-        $data = [
-            'content' => $content,
-            'message' => '確認画面',
-            'email' => $email,
-            'name'=>$name
-            ];
-        
-        return view ('contact.confirm' , $data);
-            
+        if($request->validated()){
+            $data = $request->all();
+          
+             return view ('contact.confirm' , [
+                 'data'=>$data
+                 ] );
+                
+            }
     }
     
-    public function send(Request $request)
+    public function send(ContactRequest $request)
     {
-       
-        $request->validate([
-            'content' => 'required|string',
-            'email' => 'required|string',
-            'name'=> 'required|string'
-            ]);
-       
-       
+         if($request->validated())
+         {
+             $request->session()->regenerateToken();
+
+             \Mail::send(new Contactsendmail());
             
-             \Mail::send(new ContactSendmail([
-             'to_name' => $request->name,
-             'name'=> 'Tufs-Tours',
-             'from_email' => 'kaai06221733@gmail.com',
-             'to' => $request->email,
-             'data' => $request->content,
-             'subject' => '自動送信メール'
-             ], 'mail.blade.php'));
-         
-        
-         $request->session()->regenerateToken();
-         
-         return view('contact.send');
-            
-        
-        
+         }
+          return view('contact.send');
+          
     }
+    
+   
 }
 
- 
