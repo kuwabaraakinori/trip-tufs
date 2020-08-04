@@ -93,6 +93,7 @@ class ContentController extends Controller
    
     public function update(ContentRequest $request , $id)
     {
+        /*
         if($request->validated()){
             $content = Content::find($id);
 
@@ -115,8 +116,8 @@ class ContentController extends Controller
             'content'=>$content,
             'message'=>'確認画面'
             ]);
+        */
         
-        /*
         if($request->validated()){
             $content = Content::find($id);
 
@@ -137,7 +138,7 @@ class ContentController extends Controller
         return view('content.editconfirm' , [
             'content'=>$content,
             'message'=>'確認画面'
-            ]);*/
+            ]);
 
     }
 
