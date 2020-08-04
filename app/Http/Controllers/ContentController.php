@@ -27,6 +27,7 @@ class ContentController extends Controller
 
     public function store(ContentRequest $request)
     {
+        /*
         if($request->validated()){
             $content =new Content;
             
@@ -46,8 +47,9 @@ class ContentController extends Controller
         }
 
         return redirect('/');
+        */
         
-        /*
+        
         if($request->validated()){
             $content =new Content;
             
@@ -66,7 +68,7 @@ class ContentController extends Controller
         }
 
         return redirect('/');
-        */
+        
     }
 
    

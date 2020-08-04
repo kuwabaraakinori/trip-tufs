@@ -5,7 +5,7 @@
         <h2 style="font-family:serif; background-color:#E6E6E6; text-shadow:2px 2px 1px #B4B4B4 ; font-weight:bolder;  text-align:center;">{{ $message }}</h2>
     </div>
     <div class="card col-md-10" style="width: 21rem;">
-　　<img src="{{ $content->picture }}" class="rounded float-left" width="100%" height="200">   
+　　<img src="{{asset('storage/public/picture/' . $content->picture) }}" class="rounded float-left" width="100%" height="200">   
 　　<div class="card-body">
         <h5 class="card-title">{{ $content->title }}</h5>
         <p class="card-text">{{ $content->content }}</p>
