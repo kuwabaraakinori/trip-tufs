@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContentRequest;
 use App\Content;
-
+use Storage;
 class ContentController extends Controller
 {
    
@@ -30,6 +30,27 @@ class ContentController extends Controller
         if($request->validated()){
             $content =new Content;
             
+            $image = $request->file('picture');
+            $path = Storage::disk('s3')->putFile('tufstravel', $image, 'public');
+            $content->picture = Storage::disk('s3')->url($path);
+
+            $content->user_id = $request->user_id;
+            $content->content = $request->content;
+            $content->title = $request->title;
+            $content->span = $request->span;
+            $content->continent = $request->continent;
+            $content->country = $request-> country;
+            $content->costs = $request->costs;
+            
+            $content->save();
+        }
+
+        return redirect('/');
+        
+        /*
+        if($request->validated()){
+            $content =new Content;
+            
             $filename = $request->file('picture')->store('public/picture');
             $content->picture = basename($filename);
 
@@ -45,7 +66,7 @@ class ContentController extends Controller
         }
 
         return redirect('/');
-        
+        */
     }
 
    
@@ -70,7 +91,30 @@ class ContentController extends Controller
    
     public function update(ContentRequest $request , $id)
     {
+        if($request->validated()){
+            $content = Content::find($id);
 
+            $image = $request->file('picture');
+            $path = Storage::disk('s3')->putFile('tufstravel', $image, 'public');
+            $content->picture = Storage::disk('s3')->url($path);
+
+            $content->user_id = $request->user_id;
+            $content->content = $request->content;
+            $content->title = $request->title;
+            $content->span = $request->span;
+            $content->continent = $request->continent;
+            $content->country = $request-> country;
+            $content->costs = $request->costs;
+            
+            $content->save();
+        }
+
+        return view('content.editconfirm' , [
+            'content'=>$content,
+            'message'=>'確認画面'
+            ]);
+        
+        /*
         if($request->validated()){
             $content = Content::find($id);
 
@@ -91,7 +135,7 @@ class ContentController extends Controller
         return view('content.editconfirm' , [
             'content'=>$content,
             'message'=>'確認画面'
-            ]);
+            ]);*/
 
     }
 
