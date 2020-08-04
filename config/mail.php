@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'pgsql'),
+    'driver' => env('MAIL_DRIVER', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
