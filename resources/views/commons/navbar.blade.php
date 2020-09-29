@@ -51,6 +51,4 @@
          </div>
         </nav>
     </div>
-    <div class="jumbotron">
-    </div>
 </header>

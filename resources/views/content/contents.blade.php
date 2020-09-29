@@ -4,7 +4,7 @@
         <div class="card-columns">
         @foreach($contents as $content)
         <div class="mb-5">
-        　<img src="{{asset('storage/public/picture/' . $content->picture) }}" class="rounded float-left" width="100%" height="180">
+        　<img src="{{asset('storage/public/picture/' . $content->picture) }}" class="rounded float-left" width="95%" height="180">
           <div class="card" style="width: 22rem;">
            <div class="card-body">
              <h5 class="card-title">{{ $content->title }}</h5>
